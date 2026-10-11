@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-echo "=== VPS Setup for WeakKey Typer ==="
+echo "=== VPS Setup for Typing Trainer ==="
 
 # Configure swap if not already present
 if [ ! -f /swapfile ]; then

@@ -1,5 +1,5 @@
 {
-  "name": "weak-key-typer-client",
+  "name": "typing-trainer-client",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -8,9 +8,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.16.0",
-    "@astrojs/preact": "^3.5.0",
-    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/preact": "^6.0.6",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^7.3.8",
     "preact": "^10.24.0",
     "tailwindcss": "^3.4.0"
   }

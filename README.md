@@ -1,4 +1,4 @@
-# WeakKey Typer — Targeted Typing Practice
+# Typing Trainer — Targeted Typing Practice
 
 A resource-efficient typing practice tool that drills specific "weak" characters on your keyboard. Built for performance on low-resource VPS environments (1GB RAM).
 
@@ -13,7 +13,7 @@ A resource-efficient typing practice tool that drills specific "weak" characters
 
 ## Tech Stack
 
-- **Frontend:** Astro 4 + Preact + Tailwind CSS
+- **Frontend:** Astro 7 + Preact + Tailwind CSS
 - **Backend:** Node.js + Express + TypeScript (ES Modules)
 - **Persistence:** Client-side localStorage (no database required)
 - **Production:** Nginx reverse proxy + PM2 process manager
@@ -94,8 +94,8 @@ cd ../client && npm run build
 
 5. Configure Nginx:
    ```bash
-   sudo cp deploy/nginx.conf /etc/nginx/sites-available/weak-key-typer
-   sudo ln -s /etc/nginx/sites-available/weak-key-typer /etc/nginx/sites-enabled/
+   sudo cp deploy/nginx.conf /etc/nginx/sites-available/typing-trainer
+   sudo ln -s /etc/nginx/sites-available/typing-trainer /etc/nginx/sites-enabled/
    sudo nginx -t && sudo systemctl restart nginx
    ```
 

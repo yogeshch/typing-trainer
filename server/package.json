@@ -1,5 +1,5 @@
 {
-  "name": "weak-key-typer-server",
+  "name": "typing-trainer-server",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

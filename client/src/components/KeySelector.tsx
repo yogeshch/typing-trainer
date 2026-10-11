@@ -53,7 +53,7 @@ export default function KeySelector({ onStart }: Props) {
       {/* Header */}
       <div class="text-center">
         <h1 class="text-4xl font-bold text-slate-800 dark:text-text mb-2">
-          Weak<span class="text-indigo-600 dark:text-accent">Key</span> Typer
+          Typing <span class="text-indigo-600 dark:text-accent">Trainer</span>
         </h1>
         <p class="text-slate-500 dark:text-subtext text-lg">Select up to {MAX_KEYS} characters to practice</p>
       </div>
