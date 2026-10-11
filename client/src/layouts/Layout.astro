@@ -6,7 +6,7 @@ const { title = 'WeakKey Typer — Targeted Typing Practice' } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,8 +19,20 @@ const { title = 'WeakKey Typer — Targeted Typing Practice' } = Astro.props;
       rel="stylesheet"
     />
     <title>{title}</title>
+    <script is:inline>
+      const savedTheme = localStorage.getItem('typing_theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
   </head>
-  <body class="bg-base text-text font-mono min-h-screen flex flex-col">
+  <body class="bg-slate-100 text-slate-800 dark:bg-base dark:text-text font-mono min-h-screen flex flex-col transition-colors duration-200">
     <main class="flex-1">
       <slot />
     </main>

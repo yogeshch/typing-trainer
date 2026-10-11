@@ -52,10 +52,10 @@ export default function KeySelector({ onStart }: Props) {
     <div class="flex flex-col items-center gap-8">
       {/* Header */}
       <div class="text-center">
-        <h1 class="text-4xl font-bold text-text mb-2">
-          Weak<span class="text-accent">Key</span> Typer
+        <h1 class="text-4xl font-bold text-slate-800 dark:text-text mb-2">
+          Weak<span class="text-indigo-600 dark:text-accent">Key</span> Typer
         </h1>
-        <p class="text-subtext text-lg">Select up to {MAX_KEYS} characters to practice</p>
+        <p class="text-slate-500 dark:text-subtext text-lg">Select up to {MAX_KEYS} characters to practice</p>
       </div>
 
       {/* Presets */}
@@ -64,8 +64,8 @@ export default function KeySelector({ onStart }: Props) {
           <button
             key={preset.label}
             onClick={() => applyPreset(preset)}
-            class="px-4 py-2 rounded-lg bg-surface text-text text-sm font-medium
-                   hover:bg-overlay transition-colors border border-overlay"
+            class="px-4 py-2 rounded-lg bg-white dark:bg-surface text-slate-700 dark:text-text text-sm font-medium
+                   hover:bg-slate-100 dark:hover:bg-overlay transition-colors border border-slate-200 dark:border-overlay shadow-sm"
           >
             {preset.label}
           </button>
@@ -73,7 +73,7 @@ export default function KeySelector({ onStart }: Props) {
       </div>
 
       {worstKeysMsg && (
-        <p class="text-incorrect text-sm -mt-4">{worstKeysMsg}</p>
+        <p class="text-red-500 dark:text-incorrect text-sm -mt-4">{worstKeysMsg}</p>
       )}
 
       {/* Keyboard Layout */}
@@ -90,11 +90,11 @@ export default function KeySelector({ onStart }: Props) {
                 <button
                   key={key}
                   onClick={() => toggleKey(key)}
-                  class={`w-12 h-12 rounded-lg font-semibold text-lg uppercase transition-all
+                  class={`w-12 h-12 rounded-lg font-semibold text-lg uppercase transition-all shadow-sm
                     ${
                       isSelected
-                        ? 'bg-accent text-white shadow-lg shadow-accent/30 scale-105'
-                        : 'bg-surface text-subtext hover:bg-overlay hover:text-text'
+                        ? 'bg-indigo-600 dark:bg-accent text-white shadow-lg shadow-indigo-600/30 dark:shadow-accent/30 scale-105'
+                        : 'bg-white dark:bg-surface text-slate-600 dark:text-subtext border border-slate-200 dark:border-transparent hover:bg-slate-100 dark:hover:bg-overlay hover:text-slate-900 dark:hover:text-text'
                     }
                     ${!isSelected && selected.length >= MAX_KEYS ? 'opacity-40 cursor-not-allowed' : ''}
                   `}
@@ -111,12 +111,12 @@ export default function KeySelector({ onStart }: Props) {
       {/* Selected Keys Display */}
       {selected.length > 0 && (
         <div class="flex items-center gap-2">
-          <span class="text-subtext text-sm">Selected:</span>
+          <span class="text-slate-500 dark:text-subtext text-sm">Selected:</span>
           <div class="flex gap-1.5">
             {selected.map((key) => (
               <span
                 key={key}
-                class="px-3 py-1 rounded-full bg-accent/20 text-accent font-semibold text-sm uppercase"
+                class="px-3 py-1 rounded-full bg-indigo-50 dark:bg-accent/20 text-indigo-600 dark:text-accent font-semibold text-sm uppercase border border-indigo-200 dark:border-transparent"
               >
                 {key}
               </span>
@@ -132,8 +132,8 @@ export default function KeySelector({ onStart }: Props) {
         class={`px-8 py-3 rounded-xl font-bold text-lg transition-all
           ${
             selected.length > 0
-              ? 'bg-accent text-white hover:bg-accent-light shadow-lg shadow-accent/25 hover:scale-105'
-              : 'bg-surface text-subtext cursor-not-allowed'
+              ? 'bg-indigo-600 dark:bg-accent text-white hover:bg-indigo-700 dark:hover:bg-accent-light shadow-lg shadow-indigo-600/25 dark:shadow-accent/25 hover:scale-105'
+              : 'bg-slate-200 dark:bg-surface text-slate-400 dark:text-subtext cursor-not-allowed'
           }
         `}
       >

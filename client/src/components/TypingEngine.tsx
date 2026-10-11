@@ -184,20 +184,20 @@ export default function TypingEngine({ text, targetKeys, onComplete }: Props) {
       {/* Live Stats Bar */}
       <div class="flex items-center justify-center gap-8 text-sm">
         <div class="flex flex-col items-center">
-          <span class="text-subtext text-xs uppercase tracking-wider">WPM</span>
-          <span class="text-2xl font-bold text-accent">{liveWpm()}</span>
+          <span class="text-slate-500 dark:text-subtext text-xs uppercase tracking-wider">WPM</span>
+          <span class="text-2xl font-bold text-indigo-600 dark:text-accent">{liveWpm()}</span>
         </div>
         <div class="flex flex-col items-center">
-          <span class="text-subtext text-xs uppercase tracking-wider">Accuracy</span>
-          <span class="text-2xl font-bold text-text">{liveAccuracy()}%</span>
+          <span class="text-slate-500 dark:text-subtext text-xs uppercase tracking-wider">Accuracy</span>
+          <span class="text-2xl font-bold text-slate-800 dark:text-text">{liveAccuracy()}%</span>
         </div>
         <div class="flex flex-col items-center">
-          <span class="text-subtext text-xs uppercase tracking-wider">Time</span>
-          <span class="text-2xl font-bold text-text">{formatTime(elapsed)}</span>
+          <span class="text-slate-500 dark:text-subtext text-xs uppercase tracking-wider">Time</span>
+          <span class="text-2xl font-bold text-slate-800 dark:text-text">{formatTime(elapsed)}</span>
         </div>
         <div class="flex flex-col items-center">
-          <span class="text-subtext text-xs uppercase tracking-wider">Remaining</span>
-          <span class="text-2xl font-bold text-subtext">{text.length - position}</span>
+          <span class="text-slate-500 dark:text-subtext text-xs uppercase tracking-wider">Remaining</span>
+          <span class="text-2xl font-bold text-slate-500 dark:text-subtext">{text.length - position}</span>
         </div>
       </div>
 
@@ -206,15 +206,15 @@ export default function TypingEngine({ text, targetKeys, onComplete }: Props) {
         ref={containerRef}
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        class="relative p-8 rounded-xl bg-surface text-lg leading-10 font-mono
+        class="relative p-8 rounded-xl bg-white dark:bg-surface text-lg leading-10 font-mono
                max-h-[400px] overflow-y-auto outline-none cursor-default
-               border border-overlay focus:border-accent transition-colors"
+               border border-slate-200 dark:border-overlay focus:border-indigo-600 dark:focus:border-accent shadow-sm transition-colors"
         style={{ caretColor: 'transparent' }}
       >
         {/* Caret */}
         <div
           ref={caretRef}
-          class={`absolute w-0.5 bg-accent rounded-full transition-all duration-75 pointer-events-none
+          class={`absolute w-0.5 bg-indigo-600 dark:bg-accent rounded-full transition-all duration-75 pointer-events-none
             ${!startTime || isComplete ? 'animate-pulse' : ''}`}
           style={{ zIndex: 10 }}
         />
@@ -227,11 +227,13 @@ export default function TypingEngine({ text, targetKeys, onComplete }: Props) {
 
             let className = 'relative inline ';
             if (state === 'pending') {
-              className += 'text-subtext';
+              // High contrast before typing: text-slate-200 in dark mode, text-slate-600 in light mode
+              className += 'text-slate-600 dark:text-slate-200 ';
             } else if (state === 'correct') {
-              className += 'text-text';
+              // Dulled typed state: text-slate-400 in light mode, text-slate-500 / text-subtext in dark mode
+              className += 'text-slate-400 dark:text-slate-500 ';
             } else {
-              className += 'text-incorrect bg-incorrect/15 rounded-sm';
+              className += 'text-red-500 dark:text-incorrect bg-red-500/15 dark:bg-incorrect/15 rounded-sm font-semibold ';
             }
 
             return (
@@ -244,7 +246,7 @@ export default function TypingEngine({ text, targetKeys, onComplete }: Props) {
               >
                 {char}
                 {state === 'pending' && isTarget && (
-                  <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-accent/40 rounded" />
+                  <span class="absolute bottom-0 left-0 right-0 h-0.5 bg-indigo-600/50 dark:bg-accent/50 rounded" />
                 )}
               </span>
             );
