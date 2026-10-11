@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import App from '../components/App';
+---
+
+<Layout>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <App client:only="preact" />
+  </div>
+</Layout>
