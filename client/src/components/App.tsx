@@ -10,7 +10,7 @@ import type { TypingResult } from '../lib/typingMetrics';
 
 type View = 'select' | 'typing' | 'results';
 
-const API_URL = (typeof import.meta !== 'undefined' && (import.meta as any).env?.PUBLIC_API_URL) || 'http://localhost:3001';
+const API_URL = (typeof import.meta !== 'undefined' && (import.meta as any).env?.PUBLIC_API_URL) ?? '';
 
 export default function App() {
   const [view, setView] = useState<View>('select');

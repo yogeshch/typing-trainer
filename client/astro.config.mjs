@@ -7,6 +7,14 @@ export default defineConfig({
   output: 'static',
   server: { port: 4321 },
   vite: {
-    ssr: { noExternal: [] }
-  }
+    ssr: { noExternal: [] },
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3001',
+          changeOrigin: true,
+        },
+      },
+    },
+  },
 });
