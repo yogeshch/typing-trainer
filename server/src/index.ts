@@ -9,11 +9,23 @@ app.use(cors());
 app.use(express.json());
 
 // ── Health check ──
-app.get('/api/health', (_req, res) => {
+app.get('/api/health', (req, res) => {
+  const secretKey = process.env.HEALTH_TOKEN;
+  const providedKey = req.headers['x-health-token'] || req.query.token;
+
+  // Expose detailed system diagnostics only if HEALTH_TOKEN is set and matches
+  if (secretKey && providedKey === secretKey) {
+    res.json({
+      status: 'ok',
+      uptime: process.uptime(),
+      memoryUsage: process.memoryUsage(),
+    });
+    return;
+  }
+
+  // Minimal safe public response (no internal metrics leaked)
   res.json({
     status: 'ok',
-    uptime: process.uptime(),
-    memoryUsage: process.memoryUsage(),
   });
 });
 

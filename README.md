@@ -57,7 +57,7 @@ cd ../client && npm run build
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/health` | Health check with memory usage stats |
+| GET | `/api/health` | Public liveness check (`{ status: "ok" }`). Pass `?token=...` or `x-health-token` for full diagnostics |
 | GET | `/api/generate?keys=x,z,q&words=75` | Generate practice text targeting specified keys |
 
 ### Generate Parameters
